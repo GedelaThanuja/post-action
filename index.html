@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			background-image:url(https://w7.pngwing.com/pngs/611/327/png-transparent-purple-gradient-watercolor-background-purple-gradual-change-blue.png) ;
+			background-repeat: no-repeat;
+			text-align: center;
+			background-position: top;
+			margin-top: 11%;
+			background-size: 100%;
+			font-size: 30px;
+			color: white;
+		}
+		button{
+			padding: 0.5%;
+			width: 7%;
+			font-size: 15px;
+			background-color: sandybrown;
+			color: black;
+		}
+		#child{
+			text-align: center;
+			margin: 15%;
+			font-size: 15px;
+		}
+		#user{
+			font-size: 15px;
+			background-color: sandybrown;
+			border: 1px solid black;
+		}
+		#password{
+			font-size: 15px;
+			background-color: sandybrown;
+			border: 1px solid black;
+		}
+		.save{
+			font-size: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="child">
+		<input id="user" type="text" placeholder="Enter username"/>
+		<P><input id="password" type="text" placeholder="password"/></P>
+		<p><button onclick="save()">Submit</button></p>
+	</div>
+	<script type="text/javascript">
+		function save(){
+			var user=document.getElementById("user").value;
+			console.log(user)
+			var password=document.getElementById("password").value
+			console.log(password)
+		fetch("http://localhost:4152/newData",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:user,age:password})
+		})
+	}
+	</script>
+</body>
+</html>
