@@ -11,11 +11,12 @@
 			text-align: center;
 			background-position: top;
 			margin-top: 11%;
-			background-size: 100%;
-			font-size: 30px;
+			background-size: 150%;
+			font-size: 18px;
 			color: white;
 		}
 		button{
+			text-align: center;
 			padding: 0.5%;
 			width: 7%;
 			font-size: 15px;
@@ -24,42 +25,92 @@
 		}
 		#child{
 			text-align: center;
-			margin: 15%;
-			font-size: 15px;
+			margin: 14%;
+			font-size: 12px;
 		}
 		#user{
+			text-align: center;
+			width: 11%;
+			padding: 0.4%;
 			font-size: 15px;
 			background-color: sandybrown;
 			border: 1px solid black;
 		}
 		#password{
+			text-align: center;
+			width: 11%;
+			padding: 0.4%;
 			font-size: 15px;
 			background-color: sandybrown;
 			border: 1px solid black;
 		}
-		.save{
+		#course{
+			text-align: center;
+			width: 11%;
+			padding: 0.4%;
 			font-size: 15px;
+			background-color: sandybrown;
+			border: 1px solid black;
+		}
+		#email{
+			text-align: center;
+			width: 11%;
+			padding: 0.4%;
+			font-size: 15px;
+			background-color: sandybrown;
+			border: 1px solid black;
+		}
+		#mobile{
+			text-align: center;
+			width: 11%;
+			padding: 0.4%;
+			font-size: 15px;
+			background-color: sandybrown;
+			border: 1px solid black;
 		}
 	</style>
-</head>
+</head>             
 <body>
 	<div class="child">
+		<h1 style="text-align: center;">Registration Page</h1>
 		<input id="user" type="text" placeholder="Enter username"/>
-		<P><input id="password" type="text" placeholder="password"/></P>
+		<p><input id="email" type="text" placeholder="Enter email-id"/></p>
+		<P><input id="password" type="text" placeholder="Enter password"/></P>
+		<p><input id="mobile" type="text" placeholder="Enter mobile number"/></p>
+		<p>
+			<select id="course">
+				<option value="select course">select course</option>
+				<option value="mpcs">MPCS</option>
+				<option value="mecs">MECS</option>
+				<option value="msds">MSDS</option>
+				<option value="others">OTHERS</option>
+			</select>
+		</p>
+		<p id="gender">
+			<input type="radio" id="gmale" name="gender"/>Male
+			<input type="radio" id="gfemale" name="gender"/>Female
+		</p>
 		<p><button onclick="save()">Submit</button></p>
 	</div>
 	<script type="text/javascript">
 		function save(){
 			var user=document.getElementById("user").value;
-			console.log(user)
-			var password=document.getElementById("password").value
-			console.log(password)
+			var password=document.getElementById("password").value;
+			var course=document.getElementById("course").value
+			var gmale=document.getElementById("gmale").checked
+			var gfemale=document.getElementById("gfemale").checked
+			console.log(gmale,gfemale)
+			if(gmale==true) var gender="male"
+			else var gender="female"
+			var email=document.getElementById("email").value
+			var mobile=document.getElementById("mobile").value
+			console.log(user,password,course,email,mobile)
 		fetch("http://localhost:4152/newData",{
 			method:"POST",
 			headers:{
 				"Content-Type":"application/json"
 			},
-			body:JSON.stringify({name:user,age:password})
+			body:JSON.stringify({name:user,age:password,course:course,gender:gender,mobile:mobile,email:email})
 		})
 	}
 	</script>

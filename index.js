@@ -18,8 +18,8 @@ app.get("/",(req,res)=>{
 
 app.post("/newData",(req,res)=>{
 	//console.log(req.body)
-	const {name,age}=req.body
-	console.log(name,age,"values")
+	const {name,age,course,gender,email,mobile}=req.body
+	console.log(name,age,course,gender,email,mobile,"values")
 	res.send("Data Added")
 })
 
